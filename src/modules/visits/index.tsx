@@ -18,10 +18,11 @@ import {
   Button,
 } from "react-admin";
 import EditIcon from "@mui/icons-material/Edit";
-import CreateIcon from "@mui/icons-material/Create";
+import AddIcon from "@mui/icons-material/Add";
 
 import { useParams, Link } from "react-router-dom";
 import { formatDateStr, parseDate } from "../common/utils";
+import { Grid } from "@mui/material";
 
 const filters = [
   <ReferenceInput source="patientId" label="Paciente" reference="patients" />,
@@ -76,7 +77,7 @@ const CreateVisitButton = ({ patientId }: IEditVisitButtonProps) => {
       to={`/patients/${patientId}/visits/create`}
       color="primary"
       label="Create"
-      startIcon={<CreateIcon />}
+      startIcon={<AddIcon />}
     />
   );
 };
@@ -96,72 +97,157 @@ export function VisitsListWithParams() {
 
 const CommonFields = () => (
   <>
-    <DateInput
-      source="date"
-      label="Fecha"
-      validate={required()}
-      format={formatDateStr}
-      parse={parseDate}
-    />
-    <TextInput
-      source="reasons"
-      label="Motivos de consulta"
-      multiline
-      rows={5}
-    />
-    <TextInput source="weight" label="Peso" type="number" parse={Number} />
-    <TextInput
-      source="headCircunference"
-      label="PC"
-      title="Perímetro cefálico"
-      type="number"
-      parse={Number}
-    />
-    <TextInput source="height" label="Talla" type="number" parse={Number} />
-    <TextInput
-      source="bloodPressure"
-      label="TA"
-      title="Tensión arterial"
-      type="number"
-      parse={Number}
-    />
-    <TextInput
-      source="temp"
-      label="Temp."
-      title="Temperatura"
-      type="number"
-      parse={Number}
-    />
-    <TextInput
-      source="results"
-      label="Resultados de análisis y estúdios"
-      multiline
-      rows={4}
-    />
-    <TextInput source="diagnosis" label="Diagnósticos" multiline rows={4} />
-    <TextInput source="treatment" label="Tratamiento" multiline rows={6} />
-    <TextInput
-      source="nonPathologicalBg"
-      label="Antecedentes no patalógicos"
-      multiline
-      rows={3}
-    />
-    <TextInput
-      source="pathologicalBg"
-      label="Antecedentes patalógicos"
-      multiline
-      rows={3}
-    />
-    <TextInput
-      source="actualMedicines"
-      label="Medicamentos que usa"
-      multiline
-      rows={3}
-    />
-    <BooleanInput source="isAllergic" label="Alergias" />
-    <TextInput source="allergicTo" label="Alergias a" multiline rows={3} />
-    <TextInput source="vaccination" label="Vacunación" multiline rows={3} />
-    <TextInput source="surgeries" label="Cirugías" multiline rows={3} />
+    <Grid container spacing={2}>
+      <Grid item md={12} xs={12}>
+        <DateInput
+          source="date"
+          label="Fecha"
+          validate={required()}
+          format={formatDateStr}
+          parse={parseDate}
+          fullWidth
+        />
+      </Grid>
+      <Grid item md={12} xs={12}>
+        <TextInput
+          source="reasons"
+          label="Motivos de consulta"
+          multiline
+          rows={5}
+          fullWidth
+        />
+      </Grid>
+      <Grid item md={3} xs={6}>
+        <TextInput
+          source="weight"
+          label="Peso"
+          type="number"
+          parse={Number}
+          fullWidth
+        />
+      </Grid>
+      <Grid item md={2} xs={6}>
+        <TextInput
+          source="headCircunference"
+          label="PC"
+          title="Perímetro cefálico"
+          type="number"
+          parse={Number}
+          fullWidth
+        />
+      </Grid>
+      <Grid item md={3} xs={4}>
+        <TextInput
+          source="height"
+          label="Talla"
+          type="number"
+          parse={Number}
+          fullWidth
+        />
+      </Grid>
+      <Grid item md={2} xs={4}>
+        <TextInput
+          source="bloodPressure"
+          label="TA"
+          title="Tensión arterial"
+          type="number"
+          parse={Number}
+          fullWidth
+        />
+      </Grid>
+      <Grid item md={2} xs={4}>
+        <TextInput
+          source="temp"
+          label="Temp."
+          title="Temperatura"
+          type="number"
+          parse={Number}
+          fullWidth
+        />
+      </Grid>
+      <Grid item md={12} xs={12}>
+        <TextInput
+          source="results"
+          label="Resultados de análisis y estúdios"
+          multiline
+          rows={4}
+          fullWidth
+        />
+      </Grid>
+      <Grid item md={12} xs={12}>
+        <TextInput
+          source="diagnosis"
+          label="Diagnósticos"
+          multiline
+          rows={4}
+          fullWidth
+        />
+      </Grid>
+      <Grid item md={12} xs={12}>
+        <TextInput
+          source="treatment"
+          label="Tratamiento"
+          multiline
+          rows={6}
+          fullWidth
+        />
+      </Grid>
+      <Grid item md={6} xs={12}>
+        <TextInput
+          source="nonPathologicalBg"
+          label="Antecedentes no patalógicos"
+          multiline
+          rows={3}
+          fullWidth
+        />
+      </Grid>
+      <Grid item md={6} xs={12}>
+        <TextInput
+          source="pathologicalBg"
+          label="Antecedentes patalógicos"
+          multiline
+          rows={3}
+          fullWidth
+        />
+      </Grid>
+      <Grid item md={12} xs={12}>
+        <TextInput
+          source="actualMedicines"
+          label="Medicamentos que usa"
+          multiline
+          rows={3}
+          fullWidth
+        />
+      </Grid>
+      <Grid item md={12} xs={12}>
+        <BooleanInput source="isAllergic" label="Alergias" />
+        <TextInput
+          source="allergicTo"
+          label="Alergias a"
+          multiline
+          rows={3}
+          fullWidth
+        />
+      </Grid>
+      <Grid item md={12} xs={12}>
+        <TextInput
+          source="vaccination"
+          label="Vacunación"
+          multiline
+          rows={3}
+          fullWidth
+        />
+      </Grid>
+      <Grid item md={12} xs={12}>
+        <TextInput
+          source="surgeries"
+          label="Cirugías"
+          multiline
+          rows={3}
+          fullWidth
+        />
+      </Grid>
+    </Grid>
   </>
 );
 
@@ -174,8 +260,8 @@ export function SimpleVisitEdit() {
   return (
     <Edit resource="visits" title={<VisitEditTitle />}>
       <SimpleForm>
-        <TextInput disabled source="id" />
-        <ReferenceInput source="patientId" reference="patients" />
+        <TextInput disabled source="id" fullWidth />
+        <ReferenceInput source="patientId" reference="patients" fullWidth />
         <CommonFields />
       </SimpleForm>
     </Edit>
