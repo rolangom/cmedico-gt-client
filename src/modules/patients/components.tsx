@@ -10,7 +10,8 @@ export const ConsultasButton = () => {
       to={`/patients/${record.id}/visits`}
       color="primary"
       label="Consultas"
-      startIcon={<EventNoteIcon />}
-    />
+    >
+      <EventNoteIcon />
+    </Button>
   );
 };

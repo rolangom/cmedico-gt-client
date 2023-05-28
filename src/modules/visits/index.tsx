@@ -67,8 +67,9 @@ const EditVisitButton = ({ patientId }: IEditVisitButtonProps) => {
       to={`/patients/${patientId}/visits/${record.id}`}
       color="primary"
       label="Editar"
-      startIcon={<EditIcon />}
-    />
+    >
+      <EditIcon />
+    </Button>
   );
 };
 const CreateVisitButton = ({ patientId }: IEditVisitButtonProps) => {
@@ -78,8 +79,9 @@ const CreateVisitButton = ({ patientId }: IEditVisitButtonProps) => {
       to={`/patients/${patientId}/visits/create`}
       color="primary"
       label="Create"
-      startIcon={<AddIcon />}
-    />
+    >
+      <AddIcon />
+    </Button>
   );
 };
 const BackToPatientButton = ({ patientId }: IEditVisitButtonProps) => {
@@ -89,8 +91,9 @@ const BackToPatientButton = ({ patientId }: IEditVisitButtonProps) => {
       to={`/patients/${patientId}`}
       color="primary"
       label="Volver al paciente"
-      startIcon={<ArrowBackIcon />}
-    />
+    >
+      <ArrowBackIcon />
+    </Button>
   );
 };
 

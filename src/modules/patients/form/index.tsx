@@ -33,9 +33,16 @@ const growthStatusChoices = [
   { id: "I", name: "No adecuado" },
 ];
 
-const CommonFields = () => (
+interface CommonFieldsProps {
+  topEl?: React.ReactNode;
+  bottomEl?: React.ReactNode;
+}
+const CommonFields = ({ topEl, bottomEl }: CommonFieldsProps) => (
   <>
     <Grid container spacing={2}>
+      <Grid item md={12} xs={12}>
+        {topEl}
+      </Grid>
       <Grid item md={4} xs={12}>
         <TextInput
           source="firstName"
@@ -149,6 +156,9 @@ const CommonFields = () => (
           choices={growthStatusChoices}
         />
       </Grid>
+      <Grid item md={12} xs={12}>
+        {bottomEl}
+      </Grid>
     </Grid>
   </>
 );
@@ -166,9 +176,10 @@ export const PatientEdit = () => (
   <Edit title={<PatientEditTitle />}>
     <SimpleForm>
       <TextInput disabled source="id" />
-      <ConsultasButton />
-      <CommonFields />
-      <ConsultasButton />
+      <CommonFields
+        topEl={<ConsultasButton />}
+        bottomEl={<ConsultasButton />}
+      />
     </SimpleForm>
   </Edit>
 );
