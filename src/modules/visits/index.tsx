@@ -19,6 +19,7 @@ import {
 } from "react-admin";
 import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import { useParams, Link } from "react-router-dom";
 import { formatDateStr, parseDate } from "../common/utils";
@@ -41,7 +42,7 @@ function VisitsDataGrid({ editButton }: VisitsDataGridProps) {
       />
       <DateField source="date" label="Fecha" />
       <TextField source="reasons" label="Motivos de consulta" />
-      <TextField source="diagnosis" label="Dianósticos" />
+      <TextField source="diagnosis" label="Diagnósticos" />
       {editButton}
     </Datagrid>
   );
@@ -78,6 +79,17 @@ const CreateVisitButton = ({ patientId }: IEditVisitButtonProps) => {
       color="primary"
       label="Create"
       startIcon={<AddIcon />}
+    />
+  );
+};
+const BackToPatientButton = ({ patientId }: IEditVisitButtonProps) => {
+  return (
+    <Button
+      component={Link}
+      to={`/patients/${patientId}`}
+      color="primary"
+      label="Volver al paciente"
+      startIcon={<ArrowBackIcon />}
     />
   );
 };
@@ -278,8 +290,9 @@ export function VisitEdit() {
       title={<VisitEditTitle />}
     >
       <SimpleForm>
-        <TextInput disabled source="id" />
+        {/* <BackToPatientButton patientId={patientId!} /> */}
         <ReferenceField source="patientId" reference="patients" />
+        <TextInput disabled source="id" />
         <CommonFields />
       </SimpleForm>
     </Edit>
@@ -304,6 +317,7 @@ export function VisitCreate() {
       redirect={`/patients/${patientId}/visits`}
     >
       <SimpleForm>
+        <BackToPatientButton patientId={patientId!} />
         <ReferenceField source="patientId" reference="patients" />
         <CommonFields />
       </SimpleForm>
