@@ -17,12 +17,14 @@ import {
   VisitsListWithParams,
 } from "../visits";
 
+import { theme } from "./theme";
+
 const dataProvider = jsonServerProvider(
   `${import.meta.env.VITE_SERVER_HOST_BASE_URL}/api`
 );
 
 const App = () => (
-  <Admin dataProvider={dataProvider}>
+  <Admin theme={theme} dataProvider={dataProvider}>
     <Resource
       name="patients"
       options={{ label: "Pacientes" }}

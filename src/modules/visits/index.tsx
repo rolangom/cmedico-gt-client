@@ -7,6 +7,7 @@ import {
   ReferenceField,
   useRecordContext,
   ReferenceInput,
+  SelectInput,
   BooleanInput,
   TextInput,
   DateInput,
@@ -26,7 +27,9 @@ import { formatDateStr, parseDate } from "../common/utils";
 import { Grid } from "@mui/material";
 
 const filters = [
-  <ReferenceInput source="patientId" label="Paciente" reference="patients" />,
+  <ReferenceInput source="patientId" label="Paciente" reference="patients">
+    <SelectInput label="Paciente" validate={required()} fullWidth />
+  </ReferenceInput>,
 ];
 
 interface VisitsDataGridProps {
@@ -133,52 +136,29 @@ const CommonFields = () => (
         />
       </Grid>
       <Grid item md={3} xs={6}>
-        <TextInput
-          source="weight"
-          label="Peso"
-          type="number"
-          parse={Number}
-          fullWidth
-        />
+        <TextInput source="weight" label="Peso" fullWidth />
       </Grid>
       <Grid item md={2} xs={6}>
         <TextInput
           source="headCircunference"
           label="PC"
           title="Perímetro cefálico"
-          type="number"
-          parse={Number}
           fullWidth
         />
       </Grid>
       <Grid item md={3} xs={4}>
-        <TextInput
-          source="height"
-          label="Talla"
-          type="number"
-          parse={Number}
-          fullWidth
-        />
+        <TextInput source="height" label="Talla" fullWidth />
       </Grid>
       <Grid item md={2} xs={4}>
         <TextInput
           source="bloodPressure"
           label="TA"
           title="Tensión arterial"
-          type="number"
-          parse={Number}
           fullWidth
         />
       </Grid>
       <Grid item md={2} xs={4}>
-        <TextInput
-          source="temp"
-          label="Temp."
-          title="Temperatura"
-          type="number"
-          parse={Number}
-          fullWidth
-        />
+        <TextInput source="temp" label="Temp." title="Temperatura" fullWidth />
       </Grid>
       <Grid item md={12} xs={12}>
         <TextInput
@@ -293,7 +273,6 @@ export function VisitEdit() {
       title={<VisitEditTitle />}
     >
       <SimpleForm>
-        {/* <BackToPatientButton patientId={patientId!} /> */}
         <ReferenceField source="patientId" reference="patients" />
         <TextInput disabled source="id" />
         <CommonFields />
